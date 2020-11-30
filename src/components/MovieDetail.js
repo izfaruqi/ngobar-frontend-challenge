@@ -41,7 +41,7 @@ const MovieDetail = (props) => {
                         
                     </Container>
 
-                    <p>{props.movieDetail.movie.overview}</p>
+                    <h4>{props.movieDetail.movie.overview}</h4>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button color="red" onClick={() => props.dispatch(setMovieDetailVisibilty(false))}><Icon name="remove" /> Close</Button>
