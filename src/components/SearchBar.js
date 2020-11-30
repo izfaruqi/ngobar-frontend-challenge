@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Popup, Label } from 'semantic-ui-react'
+//import { Popup, Label } from 'semantic-ui-react'
 import { searchMovieTMDB } from '../search'
 
 const SearchBar = (props) => {
