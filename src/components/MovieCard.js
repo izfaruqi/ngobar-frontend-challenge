@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import RatingStar from './RatingStar'
 
 const MovieCard = (props) => {
+    const [hover, setHover] = useState(false)
+    const hoverStyle = "0 1px 14px 8px #d4d4d5"
     return (
-        <div className="ui card" style={{}}>
+        <div className="ui card" onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)} style={{
+            boxShadow: hover && hoverStyle
+        }}>
             <div className="image">
                 <img src={props.coverUrl}></img>
             </div>
