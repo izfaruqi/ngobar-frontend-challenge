@@ -16,3 +16,8 @@ export async function getTrendingMovies(query, page){
     return result.data
 }
 
+export async function getMovieById(id){
+    console.log(process.env.REACT_APP_TMDB_API_KEY)
+    let result = await api.get('/movie/' + id, {params: {api_key: process.env.REACT_APP_TMDB_API_KEY}})
+    return result.data
+}

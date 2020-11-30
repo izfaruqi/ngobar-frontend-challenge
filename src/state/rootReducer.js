@@ -8,6 +8,11 @@ const initialState = {
         fullScreenMessage: "",
         currentPage: 1,
         totalPages: 1
+    },
+    movieDetail: {
+        isOpen: false,
+        isLoading: false,
+        movie: {}
     }
 };
 
@@ -43,6 +48,30 @@ function rootReducer(state = initialState, action) {
                 search: {
                     ...state.search,
                     fullScreenMessage: action.payload
+                }
+            }
+        case "SET_MOVIE_DETAIL_VISIBILITY":
+            return {
+                ...state,
+                movieDetail: {
+                    ...state.movieDetail,
+                    isOpen: action.payload
+                }
+            }
+        case "SET_LOADING_MOVIE_DETAIL":
+            return {
+                ...state,
+                movieDetail: {
+                    ...state.movieDetail,
+                    isLoading: action.payload
+                }
+            }
+        case "SET_MOVIE_DETAIL_DATA":
+            return {
+                ...state,
+                movieDetail: {
+                    ...state.movieDetail,
+                    movie: action.payload
                 }
             }
         default:

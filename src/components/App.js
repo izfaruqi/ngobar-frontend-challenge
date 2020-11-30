@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import MovieList from './MovieList'
 import SearchBar from './SearchBar'
 import MainFooter from './MainFooter'
 import { searchMovieTMDB } from '../search'
+import MovieDetail from './MovieDetail'
 
 const App = () => {
     useEffect(() => {
@@ -17,6 +18,7 @@ const App = () => {
             <div style={{marginTop: 50}}></div>
             <div style={{minHeight: "60vh"}}><MovieList></MovieList></div>
             <MainFooter></MainFooter>
+            <MovieDetail></MovieDetail>
         </div>
     )
 }

@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { openMovieDetailModal } from '../movieDetail'
 import RatingStar from './RatingStar'
 
 const MovieCard = (props) => {
     const [hover, setHover] = useState(false)
     const hoverStyle = "0 1px 14px 8px #d4d4d5"
+
     return (
         <div className="ui card" onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)} style={{
             cursor: 'pointer',
             boxShadow: hover && hoverStyle
-        }}>
+            }} onClick={() => openMovieDetailModal(props.id)}>
             <div className="image">
                 <img src={props.coverUrl}></img>
             </div>
@@ -29,4 +32,4 @@ const MovieCard = (props) => {
     )
 }
 
-export default MovieCard
+export default connect(null, null)(MovieCard)
