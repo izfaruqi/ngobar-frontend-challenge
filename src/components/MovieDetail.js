@@ -34,7 +34,7 @@ const MovieDetail = (props) => {
                                 {props.movieDetail.movie.production_companies && props.movieDetail.movie.production_companies.map(company => {
                                     if(company.logo_path){
                                         return(<Label color="white" image style={{display: 'inline-block', marginBottom: 4, marginRight: 4, marginLeft: 0}}>
-                                            {<Image style={{padding: "4px 0px 3px 3px"}} src={"https://image.tmdb.org/t/p/w185" + company.logo_path}></Image>}
+                                            {<Image style={{padding: "3px 0px 3px 3px"}} src={"https://image.tmdb.org/t/p/w185" + company.logo_path}></Image>}
                                             {company.name}
                                         </Label>)
                                     } else {
