@@ -11,7 +11,7 @@ function cleanupMovieList(rawList){
             year: (res.release_date)? res.release_date.substring(0, 4) : "? ? ? ?",
             rating: res.vote_average,
             rateCount: res.vote_count,
-            desc: (res.overview.length <= 350)? res.overview : res.overview.substring(0, 300) + "..."
+            desc: (res.overview.length <= 350)? res.overview : res.overview.substring(0, 200) + "..."
         }
     })
 }
