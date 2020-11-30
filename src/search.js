@@ -20,6 +20,7 @@ function cleanupMovieListTMDB(rawList){
 
 function cleanupMovieListJikan(rawList){
     return rawList.map(res =>  {
+        if(res.synopsis == null) { res.synopsis = "" }
         return {
             id: res.mal_id,
             type: "Jikan",
@@ -27,7 +28,7 @@ function cleanupMovieListJikan(rawList){
             title: res.title,
             airing: res.airing,
             episodes: res.episodes,
-            //year: (res.release_date)? res.release_date.substring(0, 4) : "? ? ? ?",
+            year: (res.start_date)? res.start_date.substring(0, 4) : "? ? ? ?",
             rating: res.score,
             desc: (res.synopsis.length <= 200)? res.synopsis : res.synopsis.substring(0, 200) + "..."
         }
@@ -50,6 +51,7 @@ export async function searchMovieTMDB(query, page = 1){
     }
 
     let cleanedSearchResult = {
+        isMovie: true,
         movies: movies,
         query: query,
         currentPage: searchResult['page'],
@@ -60,7 +62,7 @@ export async function searchMovieTMDB(query, page = 1){
     store.dispatch(setLoadingSearch(false))
 }
 
-export async function changePageTMDB(page){
+async function changePageTMDB(page){
     const query = store.getState().search.query
     await searchMovieTMDB(query, page)
 }
@@ -71,7 +73,7 @@ export async function searchMovieJikan(query, page = 1){
     // If query is empty, return top anime.
     let searchResult = (query != "")? await searchAnime(query, page) : await getTopAnime(page)
 
-    let movies = cleanupMovieListJikan(searchResult['results'])
+    let movies = cleanupMovieListJikan((query != "")? searchResult['results'] : searchResult['top'])
 
     if(movies.length > 0){
         store.dispatch(setFullScreenMessage(""))
@@ -80,6 +82,7 @@ export async function searchMovieJikan(query, page = 1){
     }
 
     let cleanedSearchResult = {
+        isMovie: false,
         movies: movies,
         query: query,
         currentPage: page,
@@ -88,4 +91,17 @@ export async function searchMovieJikan(query, page = 1){
 
     store.dispatch(refreshSearchResult(cleanedSearchResult))
     store.dispatch(setLoadingSearch(false))
+}
+
+async function changePageJikan(page){
+    const query = store.getState().search.query
+    await searchMovieJikan(query, page)
+}
+
+export async function changePage(page){
+    if(store.getState().search.isMovie){
+        await changePageTMDB(page)
+    } else {
+        await changePageJikan(page)
+    }
 }

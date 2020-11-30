@@ -13,7 +13,7 @@ const RatingStar = (props) => {
     
     return(
         <span>
-            {props.rating + "/10"}&nbsp;&nbsp;{ratingStars}&nbsp;&nbsp;{`(${props.rateCount})`}
+            {props.rating + "/10"}&nbsp;&nbsp;{ratingStars}&nbsp;&nbsp;{props.rateCount && `(${props.rateCount})`}
         </span>
     )
 }

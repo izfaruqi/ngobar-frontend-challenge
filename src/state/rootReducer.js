@@ -2,6 +2,7 @@ const initialState = {
     search: {
         movies: [],
         query: "",
+        isMovie: true,
         isLoading: false,
         isNotEmpty: false,
         isFirstSearched: true,
@@ -12,6 +13,7 @@ const initialState = {
     movieDetail: {
         isOpen: false,
         isLoading: false,
+        type: 'TMDB',
         movie: {}
     }
 };
@@ -71,7 +73,8 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 movieDetail: {
                     ...state.movieDetail,
-                    movie: action.payload
+                    type: action.payload.type,
+                    movie: action.payload.movieDetail
                 }
             }
         default:

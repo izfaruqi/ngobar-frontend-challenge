@@ -2,7 +2,7 @@ import React from 'react'
 import MovieCard from './MovieCard'
 import { Pagination, Dimmer, Loader } from 'semantic-ui-react'
 import { connect } from "react-redux";
-import { changePageTMDB } from '../search'
+import { changePage } from '../search'
 
 const mapStateToProps = state => {
     return { search: state.search }
@@ -22,14 +22,14 @@ const MovieList = ({ search }) => {
 
                     <div className="ui four column stackable grid">
                         {search.movies.map(movie => (
-                            <div className="column" key={movie.id}><MovieCard id={movie.id} title={movie.title} coverUrl={movie.coverUrl} year={movie.year} rating={movie.rating} desc={movie.desc} rateCount={movie.rateCount}></MovieCard></div>
+                            <div className="column" key={movie.id}><MovieCard movie={movie}></MovieCard></div>
                         ))}
                     </div>
                 </div>
 
             </div>
             <div className="ui row centered" style={{ display: search.isNotEmpty ? "" : "none" }}>
-                <Pagination style={{ marginBottom: 10, textAlign: 'center' }} boundaryRange={3} siblingRange={2} activePage={search.currentPage} totalPages={search.totalPages} onPageChange={(e, { activePage }) => changePageTMDB(activePage)} />
+                <Pagination style={{ marginBottom: 10, textAlign: 'center' }} boundaryRange={3} siblingRange={2} activePage={search.currentPage} totalPages={search.totalPages} onPageChange={(e, { activePage }) => changePage(activePage)} />
             </div>
         </div>
     )
