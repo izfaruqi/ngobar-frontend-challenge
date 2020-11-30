@@ -16,10 +16,12 @@ const SearchBar = (props) => {
                     <input onChange={(e) => setQuery(e.target.value)} onKeyUp={(e) => { if(e.key == 'Enter'){ search(query) } }} placeholder="Search movies..."></input>
                     <button className="ui button primary" onClick={() => search(query)} >Search</button>
                 </div>
-                <Popup content="TODO: Settings" position="bottom left" on='click' pinned
-                    trigger={
-                        <button className="ui button icon"><i class="cog icon"></i></button>
-                    } />
+                {/*
+                    <Popup content="TODO: Settings" position="bottom left" on='click' pinned
+                        trigger={
+                            <button className="ui button icon"><i class="cog icon"></i></button>
+                        } />
+                */}
             </div>
         </div>
     )
