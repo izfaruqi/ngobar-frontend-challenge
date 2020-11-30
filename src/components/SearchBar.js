@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Popup } from 'semantic-ui-react'
+import { Popup, Label } from 'semantic-ui-react'
 import { searchMovieTMDB } from '../search'
 
 const SearchBar = (props) => {
@@ -19,8 +19,7 @@ const SearchBar = (props) => {
                 <Popup content="TODO: Settings" position="bottom left" on='click' pinned
                     trigger={
                         <button className="ui button icon"><i class="cog icon"></i></button>
-                    }></Popup>
-                
+                    } />
             </div>
         </div>
     )
