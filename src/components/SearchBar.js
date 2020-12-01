@@ -55,13 +55,6 @@ const SearchBar = (props) => {
                     position="bottom left"
                     open={searchWarning}
                     />
-
-                {/*
-                    <Popup content="TODO: Settings" position="bottom left" on='click' pinned
-                        trigger={
-                            <button className="ui button icon"><i class="cog icon"></i></button>
-                        } />
-                */}
             </div>
         </div>
     )
